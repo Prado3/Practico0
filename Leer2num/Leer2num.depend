@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1678915640 source:c:\users\usuario\desktop\leer2num\main.c
+	<stdio.h>
+	<stdlib.h>
+
