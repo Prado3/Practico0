@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1678840585 source:c:\users\usuario\desktop\condicionaldescuento\main.c
+	<stdio.h>
+	<stdlib.h>
+
