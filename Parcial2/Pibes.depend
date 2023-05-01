@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1682977180 source:c:\users\usuario\desktop\pibes\main.c
+	<stdio.h>
+	<stdlib.h>
+	"pila.h"
+	<conio.h>
+
+1490112217 c:\users\usuario\desktop\pibes\pila.h
+	<stdio.h>
+	<malloc.h>
+
+1490112217 source:c:\users\usuario\desktop\pibes\pila.c
+	"pila.h"
+
