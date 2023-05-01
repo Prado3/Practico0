@@ -3,185 +3,145 @@
 #include "pila.h"
 #include <conio.h>
 #define ESC 27
-#define DIM_MAYOR 100
+#define DIM 20
 
-int cargarPila(Pila* p);
-void recorrerArreglo(float a[], int validos);
-float promedioArreglo(float a[],int validos);
-void informacionPromedio(Pila p, float a[], int valor,int validos);
-float mayorArreglo(float array[],int validos);
-int menorPila(Pila p);
+int cargarPilas(Pila* A, Pila* B, Pila c);
+void ingresarDato(Pila* dato);
+int contarDatoElegidoEnC(Pila C, Pila* dato);
+int pasarPilaArreglo(Pila* C,int array[], int dimension);
+void recorrerArreglo(int array[], int validos);
+int encuentraMayorArreglo(int array[],int validos);
 
 int main()
 {
-    Pila precipiaciones, menores;
-    inicpila(&precipiaciones);
-    inicpila(&menores);
-    int menor;
-    float mayoresSesenta[DIM_MAYOR];
-    int validos = 0;
-    int valor=0;
-    int menorP;
-    float mayorA;
+    Pila pilaA, pilaB, pilaC;
+    inicpila(&pilaA);
+    inicpila(&pilaB);
+    inicpila(&pilaC);
 
-    menor = cargarPila(&precipiaciones);
-    printf("\n %d", menor);
-
-    while(!pilavacia(&precipiaciones)){
-        if(tope(&precipiaciones)>=60){
-            mayoresSesenta[validos]=tope(&precipiaciones);
-            desapilar(&precipiaciones);
-            validos++;
-        }else{
-            apilar(&menores, desapilar(&precipiaciones));
-        }
-    }
-    mostrar(&menores);
-    recorrerArreglo(mayoresSesenta,validos);
-    printf("\n Ingrese una temperatura a comparar: ");
-    scanf("%d", &valor);
-    informacionPromedio(menores,mayoresSesenta,valor,validos);
-
-    menorP = menorPila(menores);
-    printf("\n El menor de pila es: %d", menorP);
-
-    mayorA = mayorArreglo(mayoresSesenta,validos);
-    printf("\n El mayor del arreglo es: %.2f", mayorA);
-
+    cargarPilas(&pilaA,&pilaB,pilaC);
 
     return 0;
 }
 
-int cargarPila(Pila* p){
-    Pila aux;
-    inicpila(&aux);
+int cargarPilas(Pila* A, Pila* B, Pila C){
     char op;
-    int nro;
-    int menor;
+    int num;
+    int cantidad;
+    int datoI;
+    Pila dato;
+    inicpila(&dato);
+    int validos = 0;
+    int arreglo[DIM];
+    int mayor;
 
     do{
-        printf("\n Ingrese el numero de presipitaciones: ");
-        scanf("%d",&nro);
-        if(nro<=180){
-            apilar(p, nro);
+        printf("\n Ingrese los datos: ");
+        scanf("%d",&num);
+
+        if(num%3==0 && num%2==0){
+            apilar(B, num);
         }else{
-            printf("\n El numero no puedesuperar los 180");
+            if(num%3==0){
+                apilar(A,num);
+            }else{
+                apilar(&C, num);
+            }
         }
 
-        printf("\n Ingrese ESC para dejar de cargar");
+        printf("\n Ingrese ESC para dejar de cargar datos...");
         op=getch();
     }while(op!=ESC);
 
-    if(!pilavacia(p)){
-        menor=tope(p);
-        while(!pilavacia(p)){
-            if(tope(p)<menor){
-                menor=tope(p);
-                apilar(&aux, desapilar(p));
-            }else{
-                apilar(&aux, desapilar(p));
-            }
+    mostrar(A);
+    mostrar(B);
+    mostrar(&C);
+
+    ingresarDato(&dato);
+    mostrar(&dato);
+    datoI = tope(&dato);
+    cantidad = contarDatoElegidoEnC(C, &dato);
+
+    printf("\n El dato ingresado por el usuario: %d, se encuentra %d veces en la Pila C", datoI, cantidad);
+
+    validos = pasarPilaArreglo(&C,arreglo,DIM);
+    printf("\n Los validos son %d", validos);
+    mostrar(&C);
+    recorrerArreglo(arreglo,validos);
+
+    mayor = encuentraMayorArreglo(arreglo, validos);
+    printf("\n El mayor es %d", mayor);
+
+    return cantidad;
+}
+
+void ingresarDato(Pila* dato){
+    int num;
+
+    printf("\n Ingrese el dato para comparar con la Pila C: ");
+    scanf("%d", &num);
+    apilar(dato,num);
+}
+
+int contarDatoElegidoEnC(Pila C, Pila* dato){
+    int cantidad = 0;
+
+    while(!pilavacia(&C)){
+        if(tope(dato)==tope(&C)){
+            cantidad++;
         }
-        while(!pilavacia(&aux)){
-            apilar(p, desapilar(&aux));
-        }
+        desapilar(&C);
     }
-    mostrar(p);
 
-
-    return menor;
+    return cantidad;
 }
 
-void recorrerArreglo(float a[], int validos){
-    for(int i = 0; i < validos;i++){
-        printf("\n %f", a[i]);
-    }
-}
-
-float promedioArreglo(float a[],int validos){
-    float suma = 0;
-    float promedio = 0;
-    int i = 0;
-
-    while(i<validos){
-        suma = suma + a[i];
-        i++;
-    }
-    printf("\n %f",suma);
-    promedio=(float)suma/(float)i;
-    printf("\n %f", promedio);
-
-    return promedio;
-}
-
-float porcentajePila(Pila p){
+int pasarPilaArreglo(Pila* C,int array[], int dimension){
+    int validos = 0;
     Pila aux;
     inicpila(&aux);
-    int suma = 0;
-    float promedio = 0;
-    int i = 0;
 
-    while(!pilavacia(&p)){
-        suma = suma + tope(&p);
-        apilar(&aux, desapilar(&p));
-        i++;
+    while(!pilavacia(C) && validos<dimension){
+        if(tope(C)< 51 && tope(C)>4){
+            array[validos] = tope(C);
+            desapilar(C);
+            validos++;
+        }else{
+            apilar(&aux, desapilar(C));
+        }
     }
 
-    promedio = (float)suma/(float)i;
-    return promedio;
+    while(!pilavacia(&aux)){
+        apilar(C, desapilar(&aux));
+    }
+
+    return validos;
 }
 
-void informacionPromedio(Pila p, float a[], int valor,int validos){
-    float promedio = 0;
-    float porcentaje = 0;
-    float resultado = 0;
-    promedio = promedioArreglo(a,validos);
-    printf("\n El promedio es: %.2f", promedio);
-
-    porcentaje = porcentajePila(p);
-    if(porcentaje<valor){
-        resultado = 100-((porcentaje*100)/(float)valor);
-        printf("\n Las precipitaciones son %.2f menos que el valor ingresado", resultado);
-    }else{
-        resultado=100-(((float)valor*100)/porcentaje);
-        printf("\n Las precipitaciones son %.2f mas que el valor ingresado", resultado);
+void recorrerArreglo(int array[], int validos){
+    for(int i =0; i<validos;i++){
+        printf("\n %d", array[i]);
     }
 }
 
-float mayorArreglo(float array[],int validos){
-    int i = 0;
-    float mayor = 0;
+int encuentraMayorArreglo(int array[],int validos){
+    int i = validos-1;
+    int mayor;
 
-    if(validos>0){
-    mayor = array[i];
-        while(i<validos){
+    if(i>=0){
+        mayor = array[i];
+        while(i>=0){
             if(array[i]>mayor){
                 mayor = array[i];
             }
-            i++;
+            i--;
+            i--;
         }
     }
-    printf("\n %f", mayor);
-
     return mayor;
 }
 
-int menorPila(Pila p){
-    Pila aux;
-    inicpila(&aux);
-    int menor;
 
-    if(!pilavacia(&p)){
-        menor = tope(&p);
-        while(!pilavacia(&p)){
-            if(menor>tope(&p)){
-                menor = tope(&p);
-            }
-            desapilar(&p);
-        }
-    }
 
-    return menor;
-}
 
 
