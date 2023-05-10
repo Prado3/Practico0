@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1683675921 source:c:\users\usuario\desktop\matricesej\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
