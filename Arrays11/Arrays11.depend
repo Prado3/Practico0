@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1490112217 source:c:\users\usuario\documents\plantillas personalizadas de office\lucas\arrays11\pila.c
+	"pila.h"
+
+1490112217 c:\users\usuario\documents\plantillas personalizadas de office\lucas\arrays11\pila.h
+	<stdio.h>
+	<malloc.h>
+
+1683418692 source:c:\users\usuario\documents\plantillas personalizadas de office\lucas\arrays11\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
