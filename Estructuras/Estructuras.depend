@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1684898402 source:c:\users\usuario\desktop\estructuras\legajo.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"legajo.h"
+
+1684898497 c:\users\usuario\desktop\estructuras\legajo.h
+
+1684898453 source:c:\users\usuario\desktop\estructuras\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"legajo.h"
+
