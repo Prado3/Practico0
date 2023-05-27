@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1685223207 source:c:\users\usuario\documents\plantillas personalizadas de office\lucas\estructuras2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lehajo.h"
+
+1685218031 c:\users\usuario\documents\plantillas personalizadas de office\lucas\estructuras2\lehajo.h
+
+1685218031 source:c:\users\usuario\documents\plantillas personalizadas de office\lucas\estructuras2\legajo.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"lehajo.h"
+
