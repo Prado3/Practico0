@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1685484877 source:c:\users\usuario\desktop\archivos\legajo.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"legajo.h"
+
+1685484466 c:\users\usuario\desktop\archivos\legajo.h
+
+1685491129 source:c:\users\usuario\desktop\archivos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"pila.h"
+	"legajo.h"
+
+1490112217 source:c:\users\usuario\desktop\archivos\pila.c
+	"pila.h"
+
+1490112217 c:\users\usuario\desktop\archivos\pila.h
+	<stdio.h>
+	<malloc.h>
+
