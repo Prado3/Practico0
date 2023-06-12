@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1686529145 source:c:\users\usuario\documents\plantillas personalizadas de office\lucas\ejparcial3\jugadores.c
+	<stdio.h>
+	<stdlib.h>
+	"jugadores.h"
+
+1686529627 c:\users\usuario\documents\plantillas personalizadas de office\lucas\ejparcial3\jugadores.h
+
+1686528829 source:c:\users\usuario\documents\plantillas personalizadas de office\lucas\ejparcial3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"jugadores.h"
+
