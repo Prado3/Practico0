@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1686693164 source:c:\users\usuario\documents\plantillas personalizadas de office\lucas\pradolucas\paciente.c
+	<stdio.h>
+	<stdlib.h>
+	"paciente.h"
+
+1686693164 c:\users\usuario\documents\plantillas personalizadas de office\lucas\pradolucas\paciente.h
+
